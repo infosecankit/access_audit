@@ -3,16 +3,19 @@
 import pandas as pd
 import numpy as np
 
-df1 = pd.read_csv("HR_Employee_Report_Global.csv")
+#HR Sheet
+df1 = pd.read_csv("HR.csv")
 #print(df1)
 
-df2 = pd.read_csv("user_details_report_4.csv")
+#IT sheet
+df2 = pd.read_csv("IT.csv")
 #print(df2)
 
 #matching_emails = df2[df2["Email"].isin(df1["Email"])]
 #print(matching_emails.shape)
 #print(matching_emails)
 
+#see if the data is not found in the HR/legal sheet but is present in the IT sheet then spit it out which might mean they do not have a account with the HR or legal but have an Active onelogin account
 not_matching_emails = df2[~ df2["Email"].isin(df1["Email"])]
 print(not_matching_emails.shape)
 print(not_matching_emails)
